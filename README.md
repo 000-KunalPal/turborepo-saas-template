@@ -1,81 +1,105 @@
-# Turbodashboardbuddy starter
+# 🚀 Turborepo Next.js Monorepo
 
-This is an official starter Turbodashboardbuddy.
+[![Turborepo](https://img.shields.io/badge/Turborepo-EF4444?style=for-the-badge&logo=turborepo&logoColor=white)](https://turbo.build/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Turso](https://img.shields.io/badge/Turso-4D4D4D?style=for-the-badge&logo=sqlite&logoColor=white)](https://turso.tech/)
+[![Drizzle](https://img.shields.io/badge/Drizzle-0000FF?style=for-the-badge&logo=drizzle&logoColor=white)](https://orm.drizzle.team/)
+[![Auth.js](https://img.shields.io/badge/Auth.js-000000?style=for-the-badge&logo=auth0&logoColor=white)](https://authjs.dev/)
 
-## Using this example
+Welcome to our cutting-edge Turborepo monorepo! This project showcases a fully functional, production-grade setup with Next.js apps, database integration, authentication, and a sleek UI system.
 
-Run the following command:
+## 🌟 Features
 
-```sh
-npx create-turbo@latest
-```
+- 📦 Monorepo structure using Turborepo
+- 🖥️ Two Next.js applications: Web and Docs
+- 🔐 Authentication powered by Auth.js
+- 📨 Email functionality with Resend
+- 🎨 Beautiful UI components with shadcn/ui
+- 🗃️ Database integration using Turso with Drizzle ORM
+- 📚 Comprehensive documentation
 
-## What's inside?
+## 🛠️ Tech Stack
 
-This Turbodashboardbuddy includes the following packages/apps:
+- [Turborepo](https://turbo.build/repo) - Monorepo management
+- [Next.js](https://nextjs.org/) - React framework
+- [Auth.js](https://authjs.dev/) - Authentication
+- [Resend](https://resend.com/) - Email service
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Turso](https://turso.tech/) - Database
+- [Drizzle ORM](https://orm.drizzle.team/) - ORM for Turso
 
-### Apps and Packages
+## 🚀 Getting Started
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@dashboardbuddy/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@dashboardbuddy/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@dashboardbuddy/typescript-config`: `tsconfig.json`s used throughout the monodashboardbuddy
+1. Clone the repository:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+   ```bash
+   git clone https://github.com/yourusername/your-repo-name.git
+   cd your-repo-name
+   ```
 
-### Utilities
+2. Install dependencies:
 
-This Turbodashboardbuddy has some additional tools already setup for you:
+   ```bash
+   pnpm install
+   ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+3. Set up your environment variables (see `.env.example` in each app)
 
-### Build
+4. Run the development server:
+   ```bash
+   pnpm run dev
+   ```
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turbodashboardbuddy
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turbodashboardbuddy
-pnpm dev
-```
-
-### Remote Caching
-
-Turbodashboardbuddy can use a technique known as [Remote Caching](https://turbo.build/dashboardbuddy/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turbodashboardbuddy will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+## 📁 Project Structure
 
 ```
-cd my-turbodashboardbuddy
-npx turbo login
+.
+├── apps
+│   ├── web
+│   └── docs
+├── packages
+│   ├── db
+│   ├── emails
+│   ├── ui
+│   ├── config
+│   └── utils
+├── package.json
+└── turbo.json
 ```
 
-This will authenticate the Turbodashboardbuddy CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🔧 Available Scripts
 
-Next, you can link your Turbodashboardbuddy to your Remote Cache by running the following command from the root of your Turbodashboardbuddy:
+- `pnpm run dev` - Start all apps in development mode
+- `pnpm run build` - Build all apps and packages
+- `pnpm run lint` - Lint all apps and packages
+- `pnpm run test` - Run tests across the monorepo
 
-```
-npx turbo link
-```
+## 🎨 UI Components
 
-## Useful Links
+We're using [shadcn/ui](https://ui.shadcn.com/) for our UI components. Check out these amazing components:
 
-Learn more about the power of Turbodashboardbuddy:
+1. [Button](https://ui.shadcn.com/docs/components/button)
+2. [Dialog](https://ui.shadcn.com/docs/components/dialog)
+3. [Dropdown Menu](https://ui.shadcn.com/docs/components/dropdown-menu)
+4. [Tabs](https://ui.shadcn.com/docs/components/tabs)
+5. [Toast](https://ui.shadcn.com/docs/components/toast)
 
-- [Tasks](https://turbo.build/dashboardbuddy/docs/core-concepts/monodashboardbuddys/running-tasks)
-- [Caching](https://turbo.build/dashboardbuddy/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/dashboardbuddy/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/dashboardbuddy/docs/core-concepts/monodashboardbuddys/filtering)
-- [Configuration Options](https://turbo.build/dashboardbuddy/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/dashboardbuddy/docs/reference/command-line-reference)
+## 🌟 Show Your Support
+
+If you find this project useful, please consider giving it a star on GitHub! Your support helps us continue to improve and maintain this project.
+
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/your-repo-name.svg?style=social&label=Star)](https://github.com/yourusername/your-repo-name)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/yourusername/your-repo-name/issues).
+
+---
+
+<p align="center">
+  Made with ❤️ by Kunal Pal
+</p>
