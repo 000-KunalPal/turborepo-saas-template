@@ -1,0 +1,26 @@
+{
+  "name": "@dashboardbuddy/db",
+  "main": "src/index.ts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "push": "drizzle-kit push",
+    "migrate": "bun src/migrate.mts",
+    "studio": "drizzle-kit studio",
+    "seed": "bun src/seed.mts"
+  },
+  "devDependencies": {
+    "@dashboardbuddy/typescript-config": "workspace:*",
+    "drizzle-kit": "^0.24.2",
+    "next-auth": "5.0.0-beta.22",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@t3-oss/env-core": "^0.11.1",
+    "drizzle-orm": "^0.33.0",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  }
+}

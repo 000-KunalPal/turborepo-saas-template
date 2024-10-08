@@ -1,0 +1,5 @@
+{
+  "extends": "@dashboardbuddy/typescript-config/react-library.json",
+  "include": [".", "env.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}
