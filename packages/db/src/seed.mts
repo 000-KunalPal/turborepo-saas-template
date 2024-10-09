@@ -18,6 +18,7 @@ async function main() {
         stripeId: "stripeId1",
         name: "test",
         subscriptionId: "subscriptionId",
+        joinCode: "1234565",
         plan: "pro",
         endsAt: null,
         paidUntil: null,

@@ -37,9 +37,11 @@ export async function createUser(data: AdapterUser) {
     }
   }
 
+  const joinCode = crypto.randomUUID();
+
   const newWorkspace = await db
     .insert(workspace)
-    .values({ slug, name: "" })
+    .values({ slug, name: "", joinCode })
     .returning({ id: workspace.id })
     .get();
 

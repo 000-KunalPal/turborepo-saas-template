@@ -9,6 +9,7 @@ export const workspace = sqliteTable("workspace", {
   slug: text("slug").notNull().unique(), // we love random words
   name: text("name"),
 
+  joinCode: text("join_code").notNull().unique(),
   stripeId: text("stripe_id", { length: 256 }).unique(),
   subscriptionId: text("subscription_id"),
   plan: text("plan", { enum: workspacePlans }),

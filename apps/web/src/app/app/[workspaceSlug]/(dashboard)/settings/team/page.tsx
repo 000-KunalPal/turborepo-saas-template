@@ -7,6 +7,7 @@ import { InfoBanner } from "./_components/info-banner";
 import { InviteButton } from "./_components/invite-button";
 import {
   getCurrentUser,
+  getCurrentWorkspaceNumbers,
   getWorkspace,
   getWorkspaceOpenInvitations,
   getWorkspaceUsers,
@@ -24,14 +25,21 @@ export default async function TeamPage() {
   )?.role;
 
   const isFreePlan = workspace.plan === "free";
-
+  const { members } = await getCurrentWorkspaceNumbers();
+  const membersLimit =
+    workspace.limits.members === "Unlimited" ? 420 : workspace.limits.members;
   return (
     <div className="flex flex-col gap-4">
       {isFreePlan ? <ProFeatureAlert feature="Team members" /> : null}
       {!isFreePlan && !workspace.name ? <InfoBanner /> : null}
       {userRole === "owner" || userRole === "admin" ? (
         <div className="flex justify-end">
-          <InviteButton disabled={isFreePlan} />
+          <InviteButton
+            disabled={isFreePlan}
+            joinCode={workspace.joinCode}
+            name={workspace.name ?? workspace.slug}
+            limitExceeded={members >= membersLimit}
+          />
         </div>
       ) : null}
       <UserDataTable

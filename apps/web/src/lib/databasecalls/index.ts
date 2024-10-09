@@ -87,9 +87,11 @@ export async function createWorkspace() {
     }
   }
 
+  const joinCode = crypto.randomUUID();
+
   const _workspace = await db
     .insert(workspace)
-    .values({ slug, name: "" })
+    .values({ slug, name: "", joinCode })
     .returning({ id: workspace.id })
     .get();
 
@@ -382,6 +384,66 @@ export async function acceptInvitation({ token }: { token: string }) {
     message: "Invitation accepted.",
     data: _invitation.workspace,
   };
+}
+
+export async function acceptInvitationViaLink({
+  joinCode,
+}: {
+  joinCode: string;
+}) {
+  const session = await auth();
+  if (!session?.user?.id) return { message: "Missing user.", status: "error" };
+
+  const _workspace = await db.query.workspace.findFirst({
+    where: eq(workspace.joinCode, joinCode),
+  });
+  if (!_workspace) {
+    return { message: "Invalid invitation token.", status: "error" };
+  }
+
+  const _user = await db.query.user.findFirst({
+    where: eq(user.id, Number(session.user.id)),
+  });
+  if (!_user) return { message: "Invalid user.", status: "error" };
+
+  // Check if user is already part of the workspace
+  const existingMembership = await db.query.usersToWorkspaces.findFirst({
+    where: and(
+      eq(usersToWorkspaces.userId, _user.id),
+      eq(usersToWorkspaces.workspaceId, _workspace.id)
+    ),
+  });
+
+  if (existingMembership) {
+    return {
+      message: "You are already a member of this workspace.",
+      data: _workspace,
+      status: "info",
+    };
+  }
+
+  try {
+    await db
+      .insert(usersToWorkspaces)
+      .values({
+        userId: _user.id,
+        workspaceId: _workspace.id,
+        role: "member",
+      })
+      .run();
+
+    return {
+      message: "Invitation accepted successfully.",
+      data: _workspace,
+      status: "success",
+    };
+  } catch (error) {
+    console.error("Error accepting invitation:", error);
+    return {
+      message: "Failed to accept invitation. Please try again.",
+      status: "error",
+    };
+  }
 }
 
 export async function deleteInviation({ id }: { id: number }) {
