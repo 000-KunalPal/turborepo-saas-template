@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@openstatus/ui"],
+  transpilePackages: ["@dashboardbuddy/ui"],
 };
 
 export default nextConfig;
